@@ -1,0 +1,13 @@
+
+
+1. Initialize project: npm init -y
+
+2. Install Cypress: npm install cypress --save-dev
+
+3. Install TS: npm install typescript --save-dev
+
+4. Install TS with types: npm install typescript @types/node --save-dev
+
+5. Open the Cypress: npx cypress Open
+
+6. describe block: describe(description, callbackFunction)

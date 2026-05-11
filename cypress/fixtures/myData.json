@@ -1,0 +1,11 @@
+
+{
+    "url": "https://naveenautomationlabs.com/opencart/index.php?route=account/register",
+    "title": "Register Account",
+    "First Name": "Admin",
+    "Last Name": "Fool",
+    "E-Mail": "admin@fool.com",
+    "Telephone": "1234567890",
+    "Password":"@dmIn",
+    "Password Confirm": "@dmIn"
+}
