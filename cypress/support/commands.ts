@@ -35,3 +35,7 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('clickElement', (selector: string)=>{
+    cy.get(selector).scrollIntoView().click({force:true});
+});
