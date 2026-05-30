@@ -1,6 +1,7 @@
+/// <reference types="cypress" />
 
-declare namespace Cypress {
-    interface Chainable<Subject>{
-        clickElement(slector: string): Chainable<JQuery<HTMLElement>>;
+declare namespace Cypress{
+    interface Chainable<Subject=any>{
+        clickElement(selector: string): Chainable<JQuery<HTMLElement>>;
     }
 }

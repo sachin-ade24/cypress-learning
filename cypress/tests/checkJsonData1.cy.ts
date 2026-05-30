@@ -2,7 +2,7 @@
 import users from '../fixtures/users.json';
 
 describe('json test', ()=>{
-    it('json', ()=>{
+    it('json data test1', ()=>{
         const url = 'https://naveenautomationlabs.com/opencart/index.php?route=account/register';
         cy.visit(url);
         cy.get('#input-firstname').type(users.Users[0]["First Name"]);
@@ -20,5 +20,15 @@ describe('json test', ()=>{
         for(let i=0; i<=users.Users.length; i++){
             cy.log(JSON.stringify(users.Users[i]));
         };
+    });
+
+    it.only('json data test 2', ()=>{
+        const url = 'https://naveenautomationlabs.com/opencart/index.php?route=account/register';
+        cy.visit(url);
+        cy.fixture('users').then((data)=>{
+            data.Users.forEach((e: any)=>cy.log(JSON.stringify(e['First Name'])));
+            const c = data.Users.filter((e: any)=>e['First Name']==='QA');
+            cy.log(JSON.stringify(c));
+        })
     });
 });

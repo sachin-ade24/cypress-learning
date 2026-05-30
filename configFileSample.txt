@@ -1,0 +1,60 @@
+
+import { defineConfig } from 'cypress';
+const fs = require('fs');
+
+const cypressJsonConfig: Cypress.ConfigOptions & any = {
+  chromeWebSecurity: false,
+  defaultCommandTimeout: 60000,
+  requestTimeout: 60000,
+  viewportHeight: 1080,
+  viewportWidth: 1920,
+  testIsolation: false,
+  numTestsKeptInMemory: 0,
+  responseTimeout: 60000,
+  pageLoadTimeout: 69000,
+  specPattern: ['cypress/tests/*/.cy.ts'],
+  excludeSpecPattern: ['FAA.cy.ts', 'RA-1.cy.ts', 'RA.cy.ts'],
+  nodeOptions: --max-old-space-size=16384,
+  experimentalMemoryManagement: true
+};
+export default defineConfig({
+  e2e: {
+    baseUrl: 'https://us.cwcloudpartner.com',
+    ...cypressJsonConfig,
+    setupNodeEvents(on, config) {
+      // installLogsPrinter(on, {
+      //   printLogsToConsole: 'always'
+      // });
+      require('cypress-terminal-report/src/installLogsPrinter')(on, {
+        printLogsToConsole: 'always'
+      });
+      sePlugins(on, config);
+
+      on('task', {
+        writeToFile({ filePath, content }) {
+          try {
+            console.log('filePath', filePath);
+            console.log('content', content);
+            fs.writeFileSync(filePath, content);
+            return null; // Return null if the write operation was successful
+          } catch (err) {
+            console.log('error', err);
+            return err.toString(); // Return the error message if an error occurred
+          }
+        }
+      });
+
+      on('task', {
+        readFromFile({ filePath }) {
+          try {
+            const content = fs.readFileSync(filePath, 'utf-8');
+            return content; // Return the file content as a string
+          } catch (err) {
+            console.error('Error reading file:', err);
+            return null; // Or you can return an error message if preferred
+          }
+        }
+      });
+    }
+  }
+});

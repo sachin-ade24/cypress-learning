@@ -16,6 +16,10 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import 'cypress-plugin-tab';
+import 'cypress-xpath';
+import 'cypress-iframe';
+import 'cypress-wait-until';
+import '@4tw/cypress-drag-drop';
 
 Cypress.on('uncaught:exception', (err, runnable)=>{
     return false;
