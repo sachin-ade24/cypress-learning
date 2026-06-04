@@ -47,7 +47,7 @@ export default defineConfig({
   video: false,
   numTestsKeptInMemory: 0,
   experimentalInteractiveRunEvents: true,
-    retries: {
+  retries: {
     runMode: 0,
     openMode: 0
   },
