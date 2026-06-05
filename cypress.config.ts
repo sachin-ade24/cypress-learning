@@ -1,5 +1,6 @@
 import { defineConfig } from "cypress";
 import fs from 'fs';
+import { executeQuery } from "./cypress/config/utils/db";
 
 export default defineConfig({
   e2e: {
@@ -33,6 +34,11 @@ export default defineConfig({
         writeFileData(data: { path: string; content: string }) {
           fs.writeFileSync(data.path, data.content, 'utf8');
           return null;
+        }
+      }),
+      on('task', {
+        queryDb(query: string) {
+          return executeQuery(query);
         }
       });
     },

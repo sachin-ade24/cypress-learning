@@ -11,6 +11,7 @@
   },
   "include": [
     "cypress/tests/**/*.ts",
-    "cypress.config.ts"
-  ]
+    "cypress.config.ts",
+    "cypress/config/utils/**/*.ts"
+, "cypress/interview/test.cy.ts"  ]
 }
